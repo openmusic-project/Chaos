@@ -1,6 +1,6 @@
 # Chaos
 
-Aleatoric tools for OM
+Dynamic systems library for OM
 
 By Mikhail Malt, IRCAM 1998
 
