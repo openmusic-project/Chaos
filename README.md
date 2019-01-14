@@ -6,4 +6,4 @@ By Mikhail Malt, IRCAM 1998
 
 ---------
 
-See also PatchWork-Chaos manual (1997): http://support.ircam.fr/docs/om-libraries/old/ 
+See also PatchWork-Chaos manual (1997): http://support.ircam.fr/docs/om-libraries/old/PW-Chaos.2ed.pdf 
