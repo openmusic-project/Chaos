@@ -50,7 +50,7 @@
 
 
 
-(om::defmethod! kaosn1 ((seed number) (lambda number) (gamma number) (long integer) (fn? integer )) 
+(om::defmethod! kaosn1 ((seed number) (lambda number) (gamma number) (long integer) (fn? integer)) 
   :initvals '(0.1 3.99 3.8 20 1)
   :indoc '("first value" "first turbulence factor (between 0 and 4.0)" "second turbulence factor (between 0 and 4.0)" 
            "length of the sequence" "index of the conjugate function")
