@@ -1,25 +1,21 @@
 ;; ============================================================================================
-;;                                PAQUET   Systemes dynamiques
+;; PAQUET   Systemes dynamiques
 ;; ============================================================================================
-
-;;          V1.3
-;;                                               functions by Mikhail Malt   1998 Paris IRCAM
-
-
+;; functions by Mikhail Malt   1998 Paris IRCAM
 
 ;========================================================================================
 
- 
+ ; All functions defined in the package "alea"
+
 (in-package "ALEA")
 
 ;============================================================
 ;============fractus=========================================
 ;============================================================
-(om::defmethod!  alea::midpoint1  ((liste1 list) (niveaux  integer)
-                                   (prc-x number) (prc-y number)) 
+(om::defmethod! midpoint1  ((liste1 list) (niveaux  integer)
+                            (prc-x number) (prc-y number)) 
 
-
-:initvals '(nil 1 0 0)
+  :initvals '(nil 1 0 0)
   :indoc '("list seed"  "recursive deep of calculus" 
            "alea pourcent variation in the x axis" "alea pourcent variation in the y axis")
   :icon 244 
@@ -33,8 +29,9 @@ In this version the perturbation is based on a uniform distribution.
 The first output of this module is a list of coordinates:
 ( (x0 y0 ) (x1 x2 ) ... (xn yn )),
 the second input is a list of the x values and the third one a list of the y values"
-  (let ((aux) (xnew) (ynew) 
-        )
+  
+  (let ((aux) (xnew) (ynew))
+    
     (dotimes (n niveaux liste1)
       (dotimes (m (1- (length liste1)) )
         (setf xnew (om::perturbation
@@ -54,7 +51,7 @@ the second input is a list of the x values and the third one a list of the y val
 (values liste1 (first (om::mat-trans liste1)) (second (om::mat-trans liste1) ))))
 
 
-(om::defmethod!  alea::midpoint1  ((liste1 om::bpf) (niveaux  integer)
+(om::defmethod!  midpoint1  ((liste1 om::bpf) (niveaux  integer)
                                    (prc-x number) (prc-y number)) 
 
 
@@ -73,7 +70,7 @@ The first output of this module is a list of coordinates:
 ( (x0 y0 ) (x1 x2 ) ... (xn yn )),
 the second input is a list of the x values and the third one a list of the y values"
 
-(alea::midpoint1 (alea::paires liste1)  niveaux prc-x prc-y))
+(alea::midpoint1 (om::point-pairs liste1)  niveaux prc-x prc-y))
 
 
 
@@ -90,12 +87,12 @@ It is important to know that the gaussian distribution is not bounded,
 is acceptable, since only two results out of a milliard fall out
  of these limits in a true gaussian processus."
   (let ((s 0))
-    (om::for (n 1 1 12)  (setf s (+ s (random 1.0))))
+    (loop for n from 1 to 12 by 1 do (setf s (+ s (random 1.0))))
     (+ (* (- s 6) sigma) mu)))
 
 
 
-(om::defmethod!  alea::midpoint2  ((liste1 list) (niveaux  integer)
+(om::defmethod!  midpoint2  ((liste1 list) (niveaux  integer)
                          (sig-x number) (sig-y number)) 
 
 :initvals '(nil 1 0 0)
@@ -112,8 +109,10 @@ In this version the perturbation is based on a gaussian distribution.
 The first output of this module is a list of coordinates:
 ( (x0 y0 ) (x1 x2 ) ... (xn yn )),
 the second input is a list of the x values and the third one a list of the y values"
+  
   (let ((aux) (xnew) (ynew)
-        (liste1 (if (listp liste1) liste1 (alea::paires liste1))))
+        (liste1 (if (listp liste1) liste1 (om::point-pairs liste1))))
+    
     (dotimes (n niveaux liste1)
       (dotimes (m (1- (length liste1)) )
         (setf xnew (+ (alea::gauss  0 sig-x)
@@ -131,7 +130,9 @@ the second input is a list of the x values and the third one a list of the y val
       (setf liste1 (om::sort. (append aux liste1) '< 'first))
       (setf aux nil))
 
-(values liste1 (first (om::mat-trans liste1)) (second (om::mat-trans liste1) ))))
+    (values liste1 (first (om::mat-trans liste1)) (second (om::mat-trans liste1)))
+    
+    ))
 
 
 
@@ -298,18 +299,10 @@ the second input is a list of the x values and the third one a list of the y val
       (push (list (om::last-elem xlist2) (om::last-elem ylist2)) list-aux)
       (setf xlist2  (first (om::mat-trans (reverse list-aux))))
       (setf ylist2 (second (om::mat-trans (reverse list-aux)))))
-(values (reverse list-aux) (first (om::mat-trans (reverse list-aux))) (second (om::mat-trans (reverse list-aux)) ))))
-;============================================================
 
-(om::defmethod! alea::paires ((bpf om::bpf)) 
-
-:initvals '(nil)
-  :indoc '("bpf table" )
-  :icon 247 
-  :doc"the coordinates of the points within a BPF
-Outputs a list of the coordinates of the points within a multi-BPF"
-  (om::mat-trans (list (om::x-points bpf) (om::y-points bpf))))
-;=========================================================
-
+    (values (reverse list-aux) 
+            (first (om::mat-trans (reverse list-aux)))
+            (second (om::mat-trans (reverse list-aux))))
+    ))
 
 

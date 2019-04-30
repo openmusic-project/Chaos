@@ -1,52 +1,47 @@
-;--------------------------------------------------
-;Package Definition (Optional, else use package :OM) 
-;--------------------------------------------------
-
-(defvar ALEA)
-
-(defpackage "ALEA" 
-  (:use "COMMON-LISP" "OpenMusic"))
-
-
-(in-package "ALEA")
+;============================================================================
+; OM-Chaos
+; Dynamic systems library for OM
+;============================================================================
+;
+;   This program is free software. For information on usage 
+;   and redistribution, see the "LICENSE" file in this distribution.
+;
+;   This program is distributed in the hope that it will be useful,
+;   but WITHOUT ANY WARRANTY; without even the implied warranty of
+;   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+;
+;============================================================================
  
-;--------------------------------------------------
-;Variable definiton with files to load 
-;--------------------------------------------------
-
-(defvar *OMChaos-lib-files* nil)
-(setf *OMChaos-lib-files* (list
-                           (om::om-relative-path '("sources") "orbitals")
-                           (om::om-relative-path '("sources") "ifs")
-                           (om::om-relative-path '("sources") "fractus")
-                           ))
+(in-package :om)
 
 ;--------------------------------------------------
-;Loading files 
+;Load files 
 ;--------------------------------------------------
 
-(mapc #'om::compile&load *OMChaos-lib-files*)
+(mapc #'om::compile&load 
+      (list
+       (om::om-relative-path '("sources") "package")
+       (om::om-relative-path '("sources") "orbitals")
+       (om::om-relative-path '("sources") "ifs")
+       (om::om-relative-path '("sources") "fractus")
+       ))
 
 ;--------------------------------------------------
-; OM subpackages initialization
-; ("sub-pack-name" subpacke-lists class-list function-list class-alias-list)
+;Fill package 
 ;--------------------------------------------------
-(defvar *subpackages-list* nil)
-(setf *subpackages-list*
-      '(
-        ("orbitals" nil nil (alea::Verhulst Verhulst2 alea::kaosn kaosn1 baker1 baker2 lorentz navier-stokes stein
-                                            stein1 henon henon-heilles torus rossler ginger ginger2) nil)
-        ("IFS" nil nil (alea::ifs-lib alea::IFSx alea::make-w alea::app-W-trans) nil)
-        ("fractus" nil nil (midpoint1 midpoint2  alea::fract-gen1) nil)
-        ("UTILS" nil nil (distance angle rad->deg deg->rad paires alea::choixaux) nil)
-        ))
 
-;--------------------------------------------------
-;filling packages
-;--------------------------------------------------
-(om::fill-library *subpackages-list*)
+(om::set-lib-release 1.4)
 
-(om::add-lib-alias "OMChaos" "Chaos")
+(om::fill-library 
+ '(("orbitals" nil nil (alea::Verhulst alea::Verhulst2 
+                        alea::kaosn alea::kaosn1 
+                        alea::baker1 alea::baker2 alea::lorentz alea::navier-stokes 
+                        alea::stein alea::stein1 alea::henon alea::henon-heilles 
+                        alea::torus alea::rossler alea::ginger alea::ginger2) nil)
+   ("IFS" nil nil (alea::ifs-lib alea::IFSx alea::make-w alea::app-W-trans) nil)
+   ("fractus" nil nil (alea::midpoint1 alea::midpoint2 alea::fract-gen1) nil)
+   ("UTILS" nil nil (alea::distance alea::angle alea::choixaux) nil)
+   ))
 
-(om::set-lib-release 1.3)
+
 

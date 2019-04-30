@@ -1,21 +1,18 @@
 ;; ============================================================================================
-;;                                PAQUET   Systemes dynamiques
+;;                         PAQUET   Systemes dynamiques
 ;; ============================================================================================
-
-;;          V1.3
-;;                                               functions by Mikhail Malt   1998 Paris IRCAM
+;;                  functions by Mikhail Malt   1998 Paris IRCAM
 
 
 
 ;========================================================================================
 
+; All functions are defined in the package "alea"
 
 (in-package "ALEA")
-;================les logistiques======================
 
 ;=======================================================================
 ;================ORBITALS===============================================
-;=======================================================================
 ;=======================================================================
 
 
@@ -53,7 +50,7 @@
 
 
 
-(om::defmethod! alea::kaosn1 ((seed number) (lambda number) (gamma number) (long integer) (fn? integer )) 
+(om::defmethod! kaosn1 ((seed number) (lambda number) (gamma number) (long integer) (fn? integer )) 
   :initvals '(0.1 3.99 3.8 20 1)
   :indoc '("first value" "first turbulence factor (between 0 and 4.0)" "second turbulence factor (between 0 and 4.0)" 
            "length of the sequence" "index of the conjugate function")
@@ -73,7 +70,8 @@
          res)))
     (reverse res)))
 
-(om::defmethod! alea::kaosn ((seed number) (lambda number) (long integer) (fn? integer)) 
+
+(om::defmethod! kaosn ((seed number) (lambda number) (long integer) (fn? integer)) 
   :initvals '(0.1 3.99  20 1)
   :indoc '("first value" "chaotic factor (between 0 and 4.0)"  
            "length of the sequence" "index of the conjugate function")
@@ -95,7 +93,7 @@
     (reverse res)))
 
 
-(om::defmethod! alea::kaosn ((seed number) (lambda list) (long integer) (fn? integer)) 
+(om::defmethod! kaosn ((seed number) (lambda list) (long integer) (fn? integer)) 
   :initvals '(0.1 3.99  20 1)
   :indoc '("first value" "chaotic factor (between 0 and 4.0)"  
            "length of the sequence" "index of the conjugate function")
@@ -119,8 +117,7 @@
 
 
 
-
-(om::defmethod! alea::Verhulst ((seed number) (lambda number) (long integer)) 
+(om::defmethod! Verhulst ((seed number) (lambda number) (long integer)) 
   :initvals '(0.1 2.8  20 )
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" )
@@ -138,7 +135,7 @@
 
 
 
-(om::defmethod! alea::Verhulst ((seed number) (lambda list) (long integer)) 
+(om::defmethod! Verhulst ((seed number) (lambda list) (long integer)) 
   :initvals '(0.1 2.8  20 )
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" )
@@ -157,7 +154,7 @@
 
 
 
-(om::defmethod! alea::Verhulst2 ((seed number) (lambda number) 
+(om::defmethod! Verhulst2 ((seed number) (lambda number) 
                                  (long integer) (dt number)) 
   :initvals '(0.1 2.8  20 0.01)
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
@@ -176,7 +173,7 @@
 
 
 
-(om::defmethod! alea::Verhulst2 ((seed number) (lambda list) 
+(om::defmethod! Verhulst2 ((seed number) (lambda list) 
                                  (long integer) (dt number)) 
   :initvals '(0.1 2.8  20 0.01)
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
@@ -468,10 +465,10 @@
 
 
 
-(om::defmethod! alea::henon-heilles ((xinit number) (yinit number) 
-                                     (ydot number) (E  number) 
-                                     (dt number) 
-                                     (pas integer))
+(om::defmethod! henon-heilles ((xinit number) (yinit number) 
+                               (ydot number) (E  number) 
+                               (dt number) 
+                               (pas integer))
   :initvals '(0.1 0.1 0.1 1/8 0.02 100 )
   :indoc '("first x value" "first y value" "first y derivate value" "Whole energy of the system. Maximum value 1/6" 
            "step time to  numerical integration" "number of iterations steps" )
@@ -512,11 +509,13 @@
       (setf x (+ x (* xdot dt)))
       (setf y  (+ y (* ydot dt)))
       (push (list x y xdot ydot) auxlist))
- (values auxlist (first (om::mat-trans auxlist)) (second (om::mat-trans auxlist))
-        (third (om::mat-trans auxlist)) (fourth (om::mat-trans auxlist)))))
+    (values auxlist (first (om::mat-trans auxlist)) (second (om::mat-trans auxlist))
+            (third (om::mat-trans auxlist)) (fourth (om::mat-trans auxlist)))))
 
-(om::defmethod! alea::torus ((Iinit number) ( Tinit number)
-                             (K number)  (pas integer)) 
+
+
+(om::defmethod! torus ((Iinit number) ( Tinit number)
+                       (K number)  (pas integer)) 
   
   :initvals '(1.0 1.0 1.0 100 )
   :indoc '("first phase space value" "second phase space value" "deviation factor"  
@@ -602,14 +601,6 @@
 
 ;::::::::::::::UTILS:::::::::::::::::::::::::::::::::::::
 
-
-;
-(defun sign (x)
-  (if (< x 0) -1 1))
-
-; (sign -6)
-
-;==========================================================
 (om::defmethod! ginger ((xinit number) (yinit number) 
                         (cr number) (pas integer)) 
   :initvals '(1.0 1.0 0.9  100 )
