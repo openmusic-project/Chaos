@@ -18,10 +18,10 @@
  (:doc "Dynamic systems library")
  (:author "M. Malt, IRCAM 1998")
  (:source-files 
-  (:pathname (:directory (:relative "sources")) (:name "package"))
-  (:pathname (:directory (:relative "sources")) (:name "orbitals"))
-  (:pathname (:directory (:relative "sources")) (:name "ifs"))
-  (:pathname (:directory (:relative "sources")) (:name "fractus")))
+  "sources/package"
+  "sources/orbitals"
+  "sources/ifs"
+  "sources/fractus")
  (:symbols
   (:packages 
    (:package 
