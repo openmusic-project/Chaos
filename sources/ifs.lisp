@@ -69,7 +69,7 @@ the second input is a list of the x values and the third one a list of the y val
         (case mode 
           (1 (setf k tr))
           (2 (setf k (alea::choixaux vectprob listfunct))))
-        (dotimes (m  (length objet) pair)  ;applique la transformation <k> à tous les points de l'objet
+        (dotimes (m  (length objet) pair)  ;applique la transformation <k> ÀÜ tous les points de l'objet
           
           (setf  x (+ (* (nth 0 (nth k list)) (first (nth m objet)))
                       (* (nth 1 (nth k list)) (second (nth m objet)))
@@ -127,7 +127,7 @@ where A is a space transformation and t is a translation.
 The output list corresponds to seven groups of data :
 ((a1 a2 a3 ... an) (b1 b2 b3 ... bn) (c1 c2 c3 ... cn) (d1 d2 d3 ... dn)
 (e1 e2 e3 ... en) (f1 f2 f3 ... fn) (p1 p2 p3 ... pn)),
-where ‘n’ is the number of transformation which make up the system.
+where √în√ï is the number of transformation which make up the system.
 The module ifs-lib offers 19 basic models, each with its own attractor.
 
 Great part of this data were from a private library of Mikael Laurson"

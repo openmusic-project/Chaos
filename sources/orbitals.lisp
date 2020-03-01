@@ -122,7 +122,7 @@
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" )
   :icon 242 
-  :doc "Generates a sequence of length long based on the logistical equation of Pierre-François Verhulst : yn = xn-1 + xn-1 * lambda * (1 - xn-1)
+  :doc "Generates a sequence of length long based on the logistical equation of Pierre-FranÃ§ois Verhulst : yn = xn-1 + xn-1 * lambda * (1 - xn-1)
  This equation describes population growth.
  - lambda is a number or a list of parameters which define the 'turbulence' of the generated values;
  - seed is an initial value between zero and one (this value represents the initial population as a ratio to the maxi-mum population);
@@ -140,7 +140,7 @@
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" )
   :icon 242 
-  :doc "Generates a sequence of length long based on the logistical equation of Pierre-François Verhulst : yn = xn-1 + xn-1 * lambda * (1 - xn-1)
+  :doc "Generates a sequence of length long based on the logistical equation of Pierre-FranÃ§ois Verhulst : yn = xn-1 + xn-1 * lambda * (1 - xn-1)
  This equation describes population growth.
  - lambda is a number or a list of parameters which define the 'turbulence' of the generated values;
  - seed is an initial value between zero and one (this value represents the initial population as a ratio to the maxi-mum population);
@@ -160,7 +160,7 @@
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" "delta time to the numerical integration")
   :icon 242 
-  :doc "Generates a sequence of length long based on the logistical equation of Pierre-François Verhulst (see verhulst above).
+  :doc "Generates a sequence of length long based on the logistical equation of Pierre-FranÃ§ois Verhulst (see verhulst above).
  - lambda is a number or a list of parameters which define the 'turbulence' of the generated values;
  - seed is an initial value between zero and one (this value represents the initial population as a ratio to the maxi-mum population);
  - long is the length of the list generated, which is equivalent to the number of iterations. This version allows the manipulation of the parameter of time dt;
@@ -179,7 +179,7 @@
   :indoc '("first value" "chaotic factor (between 0 and 3.0)"  
            "length of the sequence" "delta time to the numerical integration")
   :icon 242 
-  :doc "Generates a sequence of length long based on the logistical equation of Pierre-François Verhulst (see verhulst above).
+  :doc "Generates a sequence of length long based on the logistical equation of Pierre-FranÃ§ois Verhulst (see verhulst above).
  - lambda is a number or a list of parameters which define the 'turbulence' of the generated values;
  - seed is an initial value between zero and one (this value represents the initial population as a ratio to the maxi-mum population);
  - long is the length of the list generated, which is equivalent to the number of iterations. This version allows the manipulation of the parameter of time dt;
@@ -319,7 +319,7 @@
  dx5= -x5 - 3*x1*x4
  - reyn is the Reynolds number, which has a certain number of interesting behaviors in function of different values of reyn. 
  For the different critical values of reyn, 
- the most remarkable point is the stochastic behavior observed when R1 reyn R2. With 28.73 R1 29.0 and R2 ± = 33.43.
+ the most remarkable point is the stochastic behavior observed when R1 reyn R2. With 28.73 R1 29.0 and R2 Â± = 33.43.
  - pas is the number of iterations, or generated points;
  - dt is a value of time for the numerical integration in the equations.
  The output of this module is a list of coordinates in five dimensions :
@@ -479,7 +479,7 @@
   
  dy^2/dt^2= -y+y^2-x^2 
  where
- x and y are the starÕs coordinates,
+ x and y are the starÃ•s coordinates,
  E is the total energy of the system,
  The maximum permitted value for E is 1/6.
  - xinit, yinit and ydot are the initial values;
@@ -491,7 +491,7 @@
  The second output returns a x values list, the third input returns a y values list,
  the fourth output returns a xdot values list and the fifth output returns a ydot values list
  See Rick Bidlack, 1992, Chaotic Systems as Simple 
- (but Complex) compositional Algorithms, in CMJ vol16,n¡3. 
+ (but Complex) compositional Algorithms, in CMJ vol16,nÂ¡3. 
  And Robert H. G. Helleman (1980) 
  -SELF-GENERATED CHAOTIC BEHAVIOR IN NONLINEAR MECHANICS- in
  Fundamentals Problems in Statistical Mechanics vol 5 pp 165-233."
@@ -534,7 +534,7 @@
  the second output returns a list with the x values, and the second output returns
  the y values as a list 
  See Rick Bidlack, 1992, Chaotic Systems as Simple 
- (but Complex) compositional Algorithms, in CMJ vol16,n¡3"
+ (but Complex) compositional Algorithms, in CMJ vol16,nÂ¡3"
   (let ((auxlist) )
     (do* ((I (mod Iinit (* 2 pi))  (mod (+ I (* k (sin TT))) (* 2 pi)))
           (TT (mod Tinit (* 2 pi)) (mod (+ I  TT) (* 2 pi)))
