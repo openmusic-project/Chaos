@@ -15,7 +15,7 @@
 (in-package :om)
 
 (defpackage "ALEA" 
-  (:use "COMMON-LISP" "OpenMusic"))
+  (:use "COMMON-LISP" "OM"))
 
 
 (om::add-lib-alias "OMChaos" "Chaos")
