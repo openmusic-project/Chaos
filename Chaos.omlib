@@ -14,7 +14,7 @@
 
 
 (:om-lib 
- (:version 1.4)
+ (:version 1.5)
  (:doc "Dynamic systems library")
  (:author "M. Malt, IRCAM 1998")
  (:source-files 

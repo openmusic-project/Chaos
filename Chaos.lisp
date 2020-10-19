@@ -30,7 +30,7 @@
 ;Fill package 
 ;--------------------------------------------------
 
-(om::set-lib-release 1.4)
+(om::set-lib-release 1.5)
 
 (om::fill-library 
  '(("orbitals" nil nil (alea::Verhulst alea::Verhulst2 
